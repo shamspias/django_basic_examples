@@ -1,0 +1,83 @@
+
+{% extends 'base.html' %} 
+
+{% block title %} Login {% endblock %} 
+
+{% block content %} 
+
+    {% if user.is_authenticated %} 
+
+        <h3 class="center orange-text" >Mr {{user.username }} you are already logged in</h3>
+
+    {% else %}
+
+    <div class="row center">
+        <img class="responsive-img" style="width: 250px;" src="http://iampias.com/images/john.png">
+        <h4 class="green-text">Please, login into your account</h4>
+        <div class="container">
+            <div class="z-depth-2 lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+    
+                <form class="col s12" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col s12">
+    
+                        </div>
+                    </div>
+    
+                   {{ form.as_p }}
+                    <div class="row">
+                        <label style="float: right;">
+                            <a class="pink-text" href="{% url 'password_reset' %}">
+                                <b>Forgot Password?</b>
+                            </a>
+                        </label>
+                        </div>
+
+                    <div class="row">
+                        <button class="btn waves-effect waves-light center" type="submit" name="action">Log In
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+    
+    
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% endif %}
+
+
+{% endblock %}
+
+
+
+
+
+<!--    
+
+<! This can be add for login ->
+
+
+    <div class="row">
+        <div class="input-field col s12">
+            <input class="validate" type="email" name="email" id="email">
+            <label for="email">Enter Your Email</label>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="input-field col s12">
+            <input class="validate" type="password" name="password" id="password">
+            <label for="password">Enter Your Password</label>
+        </div>
+        <label style="float: right;">
+            <a class="pink-text" href="#">
+                <b>Forgot Password?</b>
+            </a>
+        </label>
+    </div> 
+
+ -->
+
